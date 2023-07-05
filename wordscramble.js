@@ -18,43 +18,46 @@ const disneyWords = [
   const guessInput = document.getElementById("guess-input");
   const guessButton = document.getElementById("guess-button");
   const resultElement = document.getElementById("result");
-  const wordScrambleScoreElement = document.getElementById("wordscramble-score");
   
   guessButton.addEventListener("click", handleGuess);
   
   function initializeWordScrambleGame() {
     currentWordIndex = Math.floor(Math.random() * disneyWords.length);
-    scrambledWord = scrambleWord(disneyWords[currentWordIndex]);
+    const word = disneyWords[currentWordIndex];
+    const scrambledWord = scrambleWord(word);
     scrambledWordElement.textContent = scrambledWord;
-    guessInput.value = "";
-    resultElement.textContent = "";
   }
   
   function scrambleWord(word) {
-    const characters = word.split("");
-    for (let i = characters.length - 1; i > 0; i--) {
+    const letters = word.split("");
+    for (let i = letters.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [characters[i], characters[j]] = [characters[j], characters[i]];
+      [letters[i], letters[j]] = [letters[j], letters[i]];
     }
-    return characters.join("");
+    return letters.join("");
   }
   
   function handleGuess() {
-    const guess = guessInput.value.trim().toLowerCase();
-    if (guess === disneyWords[currentWordIndex]) {
-      resultElement.textContent = "Correct! You guessed the word.";
-      resultElement.style.color = "green";
+    const guess = guessInput.value.toLowerCase().trim();
+    const currentWord = disneyWords[currentWordIndex];
+    
+    if (guess === currentWord) {
       wordScrambleScore++;
-      initializeWordScrambleGame();
+      resultElement.textContent = "Correct!";
+      resultElement.style.color = "green";
     } else {
-      resultElement.textContent = "Incorrect guess. Try again.";
+      resultElement.textContent = "Incorrect!";
       resultElement.style.color = "red";
     }
-    updateWordScrambleScore();
+  
+    guessInput.value = "";
+    updateScore();
+    initializeWordScrambleGame();
   }
   
-  function updateWordScrambleScore() {
-    wordScrambleScoreElement.textContent = "Score: " + wordScrambleScore;
+  function updateScore() {
+    const scoreElement = document.getElementById("wordscramble-score");
+    scoreElement.textContent = "Word Scramble Score: " + wordScrambleScore;
   }
   
   initializeWordScrambleGame();
