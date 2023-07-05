@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disney Storytime - Games</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="story-collection.html">Story Collection</a></li>
+            <li><a href="interactive-story.html">Interactive Story Adventures</a></li>
+            <li><a href="create-story.html">Create Your Own Story</a></li>
+            <li><a href="activities.html">Storytime Activities</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="games">
+      <h1>Disney Games</h1>
+      <div class="game-buttons">
+        <button id="trivia-button">Start Trivia Challenge</button>
+        <button id="wordscramble-button">Start Word Scramble</button>
+      </div>
+      <div id="trivia-score" class="score"></div>
+      <div id="wordscramble-score" class="score"></div>
+      <div id="trivia-game" class="game-container">
+        <h2>Trivia Game</h2>
+        <div id="trivia-question" class="question"></div>
+        <div id="trivia-options" class="options"></div>
+        <div id="trivia-result" class="result"></div>
+        <button id="trivia-next">Next Question</button>
+      </div>
+      <div id="wordscramble-game" class="game-container">
+        <h2>Word Scramble Game</h2>
+        <div id="scrambled-word" class="scrambled-word"></div>
+        <input type="text" id="guess-input" placeholder="Enter your guess">
+        <button id="guess-button">Guess</button>
+        <div id="result" class="result"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Disney Storytime. All rights reserved.</p>
+  </footer>
+
+  <script src="games.js"></script>
+</body>
+
+</html>
